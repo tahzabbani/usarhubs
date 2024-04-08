@@ -1,24 +1,43 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './App.css';
 
-function App() {
-  const [data, setData] = React.useState(null);
+function SpreadsheetData() {
+  const [data, setData] = useState({ columns: [], data: [] });
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/api');
+      setData(result.data);
+    };
+    fetchData();
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
-      </header>
+    <div className="table-container">
+      <h2>Roundnet Hubs</h2>
+      <table>
+        <thead>
+          <tr>
+            {data.columns.map(column => (
+              <th key={column}>{column}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {data.data.map((row, index) => (
+            <tr key={index}>
+              {data.columns.map(column => (
+                <td key={column}>{row[column]}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
 
-export default App;
+export default SpreadsheetData;
+
+
