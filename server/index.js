@@ -2,7 +2,6 @@ const path = require('path');
 const express = require('express');
 const { GoogleSpreadsheet } = require('google-spreadsheet');
 const { JWT } = require('google-auth-library');
-const jsonData = require('../usarhubs-419122-ce42a4faf8f7.json');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
