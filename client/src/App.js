@@ -1,43 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import StateBlocks from './StateBlocks';
+import StatePage from './StatePage';
 import './App.css';
 
-function SpreadsheetData() {
-  const [data, setData] = useState({ columns: [], data: [] });
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get('/api');
-      setData(result.data);
-    };
-    fetchData();
-  }, []);
-
+function App() {
   return (
-    <div className="table-container">
-      <h2>Roundnet Hubs</h2>
-      <table>
-        <thead>
-          <tr>
-            {data.columns.map(column => (
-              <th key={column}>{column}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {data.data.map((row, index) => (
-            <tr key={index}>
-              {data.columns.map(column => (
-                <td key={column}>{row[column]}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" exact element={ <StateBlocks/> } />
+          <Route path="/state/:stateName" element={ <StatePage/> } />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
-export default SpreadsheetData;
-
+export default App;
 
