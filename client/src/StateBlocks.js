@@ -18,6 +18,10 @@ function StateBlocks() {
     <div>
         <div className="header">
             <h1>ROUNDNET HUBS</h1>
+            <h2 class='beta'>BETA</h2>
+        </div>
+        <div class='entry-form'>
+          <p>Enter your own hub's location <a href='https://docs.google.com/forms/d/e/1FAIpQLSfwvPLKPfuLD01Ud3rNpbAp5zf8wT-njYVo2zGMXWhC-pndRg/viewform'>here</a></p>
         </div>
         <div className="state-blocks-container">
         {stateData.map((state, index) => (

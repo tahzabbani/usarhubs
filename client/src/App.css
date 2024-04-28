@@ -20,6 +20,10 @@ body {
   color: var(--main-color); /* Apply main color to header text */
 }
 
+.entry-form{
+  text-align: center;
+}
+
 .state-blocks-container {
   display: flex;
   flex-wrap: wrap;
