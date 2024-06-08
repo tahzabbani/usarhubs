@@ -35,6 +35,7 @@ let hubsByState = {};
 
     rows.forEach(row => {
       // Ensure that required properties exist before accessing them
+      // Some rows commented out for now as they're not needed
       const state = row._rawData[0] ? row._rawData[0].trim() : '';
       const city = row._rawData[1] ? row._rawData[1].trim() : '';
       const zipCode = row._rawData[2] ? row._rawData[2].trim() : '';
