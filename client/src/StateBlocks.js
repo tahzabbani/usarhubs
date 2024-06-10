@@ -6,7 +6,7 @@ import './App.css';
 
 const stateToImageMap = {
   "Arizona": "Arizona_Tempe.jpeg",
-  "California": "California_Sacramento.jpeg", // Chose Sacramento for California
+  "California": "California.png", // Chose Sacramento for California
   "DMV Area": "DMV_GWR.jpg",
   "Georgia": "Georgia_Athens.jpeg",
   "Illinois": "Illinois.jpeg", // General Illinois image for duplicates
@@ -17,12 +17,12 @@ const stateToImageMap = {
   "New York": "NewYork_NewYorkCity.jpg", // Chose New York City for New York
   "North Carolina": "NorthCarolina_Wilmington.jpg",
   "Ohio": "Ohio_Columbus.png", // Chose Columbus for Ohio
-  "Pennsylvania": null, // No image provided for Pennsylvania
+  "Pennsylvania": "spikeball_ball.png", // No image provided for Pennsylvania
   "South Carolina": "SouthCarolina_Columbia.jpg",
   "Tennessee": "Tennessee_Nashville.jpg",
   "Texas": "Texas.png",
   "Utah": "Utah.webp", // General Utah image for all Utah entries
-  "Virginia": null, // No image provided for Virginia
+  "Virginia": "spikeball_ball.png", // No image provided for Virginia
   "Washington": "Washington_Seattle.jpeg"
 };
 
@@ -38,18 +38,19 @@ function StateBlocks() {
   }, []);
 
   return (
-    <div>
-        <div className="header">
-            <h1>ROUNDNET HUBS</h1>
-            <h2 className='beta'>BETA</h2>
-        </div>
-        <div className='entry-form'>
-          <p>Enter your own hub's location <a href='https://docs.google.com/forms/d/e/1FAIpQLSfwvPLKPfuLD01Ud3rNpbAp5zf8wT-njYVo2zGMXWhC-pndRg/viewform'>here</a></p>
-        </div>
-        <div className="state-blocks-container">
+    <div className="app-container">
+      <div className="header">
+        <h1 className="title">ROUNDNET HUBS</h1>
+        <h2 className='beta'>BETA</h2>
+      </div>
+      <div className='entry-form'>
+        <a href='https://docs.google.com/forms/d/e/1FAIpQLSfwvPLKPfuLD01Ud3rNpbAp5zf8wT-njYVo2zGMXWhC-pndRg/viewform' className="entry-button">Enter your own hub's location</a>
+      </div>
+      <div className="state-blocks-container">
         {stateData.map((state, index) => (
-            <Link key={index} to={`/state/${state.state}`} className="state-block">
+          <Link key={index} to={`/state/${state.state}`} className="state-block">
             <div>
+              <h2>{state.state}</h2>
               {stateToImageMap[state.state] && (
                 <img 
                   src={`/UsarHubLogos/${stateToImageMap[state.state]}`} 
@@ -57,11 +58,10 @@ function StateBlocks() {
                   className="state-image"
                 />
               )}
-            <h2>{state.state}</h2>
             </div>
-        </Link>
+          </Link>
         ))}
-        </div>
+      </div>
     </div>
   );
 }

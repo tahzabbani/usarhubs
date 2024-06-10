@@ -29,9 +29,9 @@ const cityToImageMap = {
   "Cleveland": "Ohio_Cleveland.jpg",
   "Columbus": "Ohio_Columbus.png",
   "Bowling Green": "Ohio_BowlingGreen.jpeg",
-  "Lima": null,
-  "Pittsburgh": null,
-  "Scranton": null,
+  "Lima": "spikeball_ball.png",
+  "Pittsburgh": "spikeball_ball.png",
+  "Scranton": "spikeball_ball.png",
   "Columbia": "SouthCarolina_Columbia.jpg",
   "Nashville": "Tennessee_Nashville.jpg",
   "Houston": "Texas.png",
@@ -50,7 +50,7 @@ const cityToImageMap = {
   "BYU": "Utah.webp",
   "Utah Tech University": "Utah.webp",
   "Southern Utah University": "Utah.webp",
-  "Richmond": null,
+  "Richmond": "spikeball_ball.png",
   "Seattle": "Washington_Seattle.jpeg"
 };
 
@@ -75,7 +75,7 @@ function StatePage() {
       </div>
       {stateData ? (
         <>
-          <h2>{stateData.state}</h2>
+          <h2 className="state-title">{stateData.state}</h2>
           <div className="hubs">
             {stateData.hubs.map((hub, index) => (
               <div key={index} className="hub-block">

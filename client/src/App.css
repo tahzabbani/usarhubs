@@ -5,11 +5,23 @@
 }
 
 body {
+  background-image: url('../public/misc_pics/main_pic.jpeg'); /* Update this path to your background image */
+  background-size: cover;
+  background-position: center;
+  margin: 0;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
   background-color: var(--main-color); /* Apply main color to background */
   color: var(--accent-color-1); /* Apply first accent color to text */
+}
+
+.app-container {
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .header {
@@ -20,10 +32,36 @@ body {
   color: var(--accent-color-1); /* Apply main color to header text */
 }
 
-.entry-form{
-  text-align: center;
+.title {
+  font-size: 3em;
+  font-weight: bold;
+  margin: 0;
 }
 
+.beta {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.entry-button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1.2em;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.entry-button:hover {
+  transform: scale(1.05); /* Increase size slightly on hover */
+}
+
+.entry-form {
+  text-align: center;
+  margin-bottom: 20px;
+}
 .state-blocks-container {
   display: flex;
   flex-wrap: wrap;
@@ -32,6 +70,7 @@ body {
 }
 
 .state-block {
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
   flex: 1 0 25%; /* Adjust the width of the state blocks */
   margin: 10px;
   padding: 20px;
@@ -61,15 +100,18 @@ body {
 .hubs {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px; /* Add a max-width to the hubs container */
+  margin: auto; /* Center the hubs container */
 }
 
 .hub-block {
-  flex: 1 0 25%; /* Adjust the width of the hub blocks */
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+  flex: 1 0 45%; /* Adjust width to fit within the container */
   margin: 10px;
   padding: 20px;
-  background-color: #f9f9f9; /* Lighter gray background color */
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Light shadow */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .hub-block h3 {
@@ -89,6 +131,15 @@ body {
 .state-page {
   text-align: center; /* Center align state name */
   padding: 20px;
+}
+
+.state-title {
+  background: var(--main-color);
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 2.5em;
 }
 
 .back-link-container {
