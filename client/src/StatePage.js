@@ -29,9 +29,9 @@ const cityToImageMap = {
   "Cleveland": "Ohio_Cleveland.jpg",
   "Columbus": "Ohio_Columbus.png",
   "Bowling Green": "Ohio_BowlingGreen.jpeg",
-  "Lima": "spikeball_ball.png",
-  "Pittsburgh": "spikeball_ball.png",
-  "Scranton": "spikeball_ball.png",
+  "Lima": "usaroundnet.png",
+  "Pittsburgh": "usaroundnet.png",
+  "Scranton": "usaroundnet.png",
   "Columbia": "SouthCarolina_Columbia.jpg",
   "Nashville": "Tennessee_Nashville.jpg",
   "Houston": "Texas.png",
@@ -50,10 +50,30 @@ const cityToImageMap = {
   "BYU": "Utah.webp",
   "Utah Tech University": "Utah.webp",
   "Southern Utah University": "Utah.webp",
-  "Richmond": "spikeball_ball.png",
+  "Richmond": "usaroundnet.png",
   "Seattle": "Washington_Seattle.jpeg"
 };
 
+function getLinkTextAndUrl(link) {
+  if (!link) return { text: '', url: null };
+
+  let text = link;
+  if (link.includes('groupme')) {
+    text = 'GroupMe';
+  } else if (link.includes('slack')) {
+    text = 'Slack';
+  } else if (link.includes('discord')) {
+    text = 'Discord';
+  }
+
+  // Check if it's a valid URL
+  try {
+    new URL(link);
+    return { text, url: link };
+  } catch {
+    return { text: link, url: null };
+  }
+}
 
 function StatePage() {
   const { stateName } = useParams();
@@ -79,17 +99,29 @@ function StatePage() {
           <div className="hubs">
             {stateData.hubs.map((hub, index) => (
               <div key={index} className="hub-block">
-                <h3>{hub.city}</h3>
+                <h3 className='city-header'>{hub.city}</h3>
                 {cityToImageMap[hub.city] && (
-                <img 
-                  src={`/UsarHubLogos/${cityToImageMap[hub.city]}`} 
-                  alt={`${hub.city} logo`} 
-                  className="state-image"
-                />
+                  <img 
+                    src={`/UsarHubLogos/${cityToImageMap[hub.city]}`} 
+                    alt={`${hub.city} logo`} 
+                    className="state-image"
+                  />
                 )}
                 <p>Zip Code: {hub.zipCode}</p>
                 <p>Social Media: {hub.socialMedia}</p>
-                <p>Join Link: <a href={hub.joinLink}>{hub.joinLink}</a></p>
+                {hub.joinLink ? (
+                  <p>Join Link: {
+                    getLinkTextAndUrl(hub.joinLink).url ? (
+                      <a href={getLinkTextAndUrl(hub.joinLink).url}>
+                        {getLinkTextAndUrl(hub.joinLink).text}
+                      </a>
+                    ) : (
+                      getLinkTextAndUrl(hub.joinLink).text
+                    )
+                  }</p>
+                ) : (
+                  <p>Join Link: None</p>
+                )}
               </div>
             ))}
           </div>

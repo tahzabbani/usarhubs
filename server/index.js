@@ -20,13 +20,10 @@ const serviceAccountAuth = new JWT({
   ],
 });
 
-// Load your Google Spreadsheet by providing its ID
-const doc = new GoogleSpreadsheet('1m43gLy19kFsKE6vsGw9sVD4goG8zL2Mb4TkX-vIlVFg', serviceAccountAuth);
+const doc = new GoogleSpreadsheet('1yV08vwzT7H0bNsheHea7hE4KPW6zqGTp0xKEi3uch9s', serviceAccountAuth);
 
-// Initialize an object to store hubs grouped by state
 let hubsByState = {};
 
-// Load spreadsheet data when the server starts
 (async () => {
   try {
     await doc.loadInfo();
@@ -45,7 +42,6 @@ let hubsByState = {};
       const joinLink = row._rawData[6] ? row._rawData[6].trim() : '';
       // const hubSize = row._rawData[7] ? row._rawData[7].trim() : '';
       // const logo = row._rawData[8] ? row._rawData[8].trim() : '';
-    
       if (!hubsByState[state]) {
         hubsByState[state] = [];
       }

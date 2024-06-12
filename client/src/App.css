@@ -16,6 +16,10 @@ body {
   color: var(--accent-color-1); /* Apply first accent color to text */
 }
 
+p {
+  font-weight:700;
+}
+
 .app-container {
   background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
   padding: 20px;
@@ -140,6 +144,10 @@ body {
   border-radius: 5px;
   margin-bottom: 20px;
   font-size: 2.5em;
+}
+
+.city-header {
+  font-size: 25px;
 }
 
 .back-link-container {
