@@ -23,7 +23,8 @@ const stateToImageMap = {
   "Texas": "Texas.png",
   "Utah": "Utah.webp", // General Utah image for all Utah entries
   "Virginia": "usaroundnet.png", // No image provided for Virginia
-  "Washington": "Washington_Seattle.jpeg"
+  "Washington": "Washington_Seattle.jpeg",
+  "default": "usaroundnet.png"
 };
 
 function StateBlocks() {
@@ -51,13 +52,11 @@ function StateBlocks() {
           <Link key={index} to={`/state/${state.state}`} className="state-block">
             <div>
               <h2>{state.state}</h2>
-              {stateToImageMap[state.state] && (
-                <img 
-                  src={`/UsarHubLogos/${stateToImageMap[state.state]}`} 
-                  alt={`${state.state} logo`} 
-                  className="state-image"
-                />
-              )}
+              <img 
+                src={`/UsarHubLogos/${stateToImageMap[state.state] || stateToImageMap['default']}`} 
+                alt={`${state.state} logo`} 
+                className="state-image"
+              />
             </div>
           </Link>
         ))}

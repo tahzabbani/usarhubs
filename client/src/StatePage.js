@@ -51,7 +51,8 @@ const cityToImageMap = {
   "Utah Tech University": "Utah.webp",
   "Southern Utah University": "Utah.webp",
   "Richmond": "usaroundnet.png",
-  "Seattle": "Washington_Seattle.jpeg"
+  "Seattle": "Washington_Seattle.jpeg",
+  "default": "usaroundnet.png"
 };
 
 function getLinkTextAndUrl(link) {
@@ -100,13 +101,11 @@ function StatePage() {
             {stateData.hubs.map((hub, index) => (
               <div key={index} className="hub-block">
                 <h3 className='city-header'>{hub.city}</h3>
-                {cityToImageMap[hub.city] && (
-                  <img 
-                    src={`/UsarHubLogos/${cityToImageMap[hub.city]}`} 
-                    alt={`${hub.city} logo`} 
-                    className="state-image"
-                  />
-                )}
+                <img 
+                  src={`/UsarHubLogos/${cityToImageMap[hub.city] || cityToImageMap['default']}`} 
+                  alt={`${hub.city} logo`} 
+                  className="state-image"
+                />
                 <p>Zip Code: {hub.zipCode}</p>
                 <p>Social Media: {hub.socialMedia}</p>
                 {hub.joinLink ? (
